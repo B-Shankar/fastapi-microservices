@@ -1,0 +1,106 @@
+curl -X 'GET' \
+  'http://127.0.0.1:8000/products' \
+  -H 'accept: application/json'
+
+Response body
+[
+  {
+    "id": "01K771E19P9PVVCB8DQYTF8S94",
+    "name": "product",
+    "price": 20,
+    "quantity": 100
+  }
+]
+
+
+
+
+curl -X 'POST' \
+  'http://127.0.0.1:8000/product' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Toy",
+  "price": 10,
+  "quantity": 200
+}'
+
+Response body
+{
+  "pk": "01K77RZXNA41JGQB6Y62T6Q267",
+  "name": "Toy",
+  "price": 10,
+  "quantity": 200
+}
+
+
+
+
+curl -X 'GET' \
+  'http://127.0.0.1:8000/products/01K77RZXNA41JGQB6Y62T6Q267' \
+  -H 'accept: application/json'
+
+
+Response body
+{
+  "pk": "01K77RZXNA41JGQB6Y62T6Q267",
+  "name": "Toy",
+  "price": 10,
+  "quantity": 200
+}
+
+
+
+curl -X 'DELETE' \
+  'http://127.0.0.1:8000/products/01K77RZXNA41JGQB6Y62T6Q267' \
+  -H 'accept: application/json'
+
+
+Response body
+1
+
+//POST API
+curl --location 'http://localhost:8001/orders' \
+--header 'Accept: application/json' \
+--header 'Accept-Language: en-GB,en;q=0.9,kn;q=0.8,en-US;q=0.7,ml;q=0.6' \
+--header 'Branch-id: 716' \
+--header 'Cache-Control: no-cache' \
+--header 'Connection: keep-alive' \
+--header 'Content-Type: application/json' \
+--header 'Facility-id: 456' \
+--header 'Origin: http://localhost:3000' \
+--header 'Pragma: no-cache' \
+--header 'Referer: http://localhost:3000/' \
+--header 'Sec-Fetch-Dest: empty' \
+--header 'Sec-Fetch-Mode: cors' \
+--header 'Sec-Fetch-Site: same-site' \
+--header 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1' \
+--data '{
+    "id": "01K774Z04127HDDA5X4V227383",
+    "quantity": 2
+}'
+
+Response Body: {
+   "pk": "01K792GKNQGVNHPS99D4NRBSHS",
+   "product_id": "01K77SJV5HWSSQ2779MS002JV7",
+   "price": 10.0,
+   "fee": 2.0,
+   "total": 12.0,
+   "quantity": 2,
+   "status": "pending"
+}
+
+
+//GET API
+curl --location 'http://localhost:8001/orders/01K792GKNQGVNHPS99D4NRBSHS' \
+--header 'accept: application/json'
+
+Response body: {
+    "pk": "01K792GKNQGVNHPS99D4NRBSHS",
+    "product_id": "01K77SJV5HWSSQ2779MS002JV7",
+    "price": 10.0,
+    "fee": 2.0,
+    "total": 12.0,
+    "quantity": 2,
+    "status": "completed"
+}
